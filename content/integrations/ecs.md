@@ -153,12 +153,12 @@ This user script above will:
 1. start the task defined in step 2 with the right parameters
 2. add a few lines to `/etc/rc.local` so that the rebooted instance starts the task
 
-#### 5. Fill the cloud-config file, and launch EC2 instance (fore CoreOS users)
+#### 5. Add a cloud-config User Script, and launch EC2 instance (fore CoreOS users)
 
 * From the EC2 console (not the ECS console) launch a new CoreOS instance that will join an ECS cluster (instructions for a simple CoreOS ECS instance [here](https://coreos.com/os/docs/latest/booting-on-ecs.html)).
 * When you get to the Configure Instance Details step:
     * Select the IAM role you created at step 2
-    * Paste the following block in User Data under Advanced Details, replace CLUSTER_NAME and YOUR_API_KEY with the ECS cluster that instance will join and your Datadog API key. This block declares two units with cloud-config, one for the ecs-agent container, used by Amazon ECS to administrate the ECS instance, and one for the dd-agent container, used by Datadog to collect metrics about the system and the tasks running on this ECS instance. Of course it can be modified to include your own tasks as well.
+    * Paste the following block in User Data under Advanced Details, replace `CLUSTER_NAME` and `YOUR_API_KEY` with the ECS cluster that instance will join and your Datadog API key. This block declares two units with cloud-config, one for the ecs-agent container, used by Amazon ECS to administrate the ECS instance, and one for the dd-agent container, used by Datadog to collect metrics about the system and the tasks running on this ECS instance. Of course it can be modified to include your own tasks as well.
 
 ~~~~~~~~
 #cloud-config
